@@ -1,0 +1,32 @@
+// kue-c source ver.0.0.1 by Airoku
+
+// N byte Add (N byte + N bypte = N byte)
+// Translated by Airoku, MMM. d, yyyy
+// Originally programmed by Akira Uejima, May. 4, 1992
+// e-mail: uejima@mics.cs.ritsumei.ac.jp
+
+typedef unsigned char Addr;
+typedef unsigned char Int;
+Int ProgramMemory[256];
+Int UserMemory[256];
+
+// Data Length(byte)
+const Addr N = 0xC0;
+// Data 1
+const Addr DATA1 = 0x80;
+// Data 2
+const Addr DATA2 = 0x90;
+// Result
+const Addr ANS = 0xA0;
+
+void kc(void) {
+    
+}
+
+int main(void) {
+    *(int*)&ProgramMemory[DATA1] = 0x00000001;
+    *(int*)&ProgramMemory[DATA2] = 0x1FFFFFFF;
+    ProgramMemory[N] = 0x04;
+    kc();
+    return *(int*)&ProgramMemory[ANS];
+}

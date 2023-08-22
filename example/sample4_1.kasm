@@ -1,0 +1,20 @@
+*** KUE-CHIP2 Assembler ver.1.0   by H.Ochi ***
+
+* Sum from 1 to N
+* Programmed by Akira Uejima, May. 5, 1992
+* e-mail: uejima@mics.cs.ritsumei.ac.jp
+
+* N
+ 80 :		N:	EQU		80H
+* Sum(result)
+ 81 :		SUM:	EQU		81H
+
+ 00 :	6C 80		LD	IX,	[N]
+ 02 :	62 00		LD	ACC,	0
+ 04 :	B1	LOOP:	ADD	ACC,	IX
+ 05 :	AA 01		SUB	IX,	1
+ 07 :	33 04		BP		LOOP
+ 09 :	74 81		ST	ACC,	[SUM]
+ 0B :	0F		HLT
+
+			END

@@ -1,0 +1,28 @@
+// kue-c source ver.0.0.1 by Airoku
+
+// Sum from 1 to N
+// Translated by Airoku, Aug. 22, 2023
+// Originally programmed by Akira Uejima, May. 5, 1992
+// e-mail: uejima@mics.cs.ritsumei.ac.jp
+
+typedef unsigned char Addr;
+typedef unsigned char Int;
+Int ProgramMemory[256];
+Int UserMemory[256];
+
+// N
+const Addr N = 0x80;
+// Sum(result)
+const Addr SUM = 0x81;
+
+void kc(void) {
+    for (;ProgramMemory[N] > 0; ProgramMemory[N]--) {
+        ProgramMemory[SUM] += ProgramMemory[N];
+    }
+}
+
+int main(void) {
+    ProgramMemory[N] = 10;
+    kc();
+    return ProgramMemory[SUM];
+}

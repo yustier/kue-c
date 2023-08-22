@@ -1,0 +1,25 @@
+*** KUE-CHIP2 Assembler ver.1.0   by H.Ochi ***
+
+* N byte Add (N byte + N bypte = N byte)
+* Programmed by Akira Uejima, May. 4, 1992
+* e-mail: uejima@mics.cs.ritsumei.ac.jp
+
+* Data Length(byte)
+N:      EQU     0C0H
+* Data 1
+DATA1:  EQU     80H
+* Data 2
+DATA2:  EQU     90H
+* Result
+ANS:    EQU     0A0H
+
+        LD      IX,     [N]
+        RCF
+LOOP:   LD      ACC,    [IX+DATA1-1]
+        ADC     ACC,    [IX+DATA2-1]
+        ST      ACC,    [IX+ANS-1]
+        SUB     IX,     1
+        BP      LOOP
+        HLT
+
+        END
